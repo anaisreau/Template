@@ -1,0 +1,65 @@
+Template
+
+1 – Que fait le code : 
+
+le code sert a cloner et copier des titres et des paragraphes dans le code html grâce a un clic sur un bouton  
+
+2- Quel est le but : 
+
+le but est de ne pas surcharger la page avec des éléments superflus et de permettre d’accéder a des informations plus détaillées grâce au clic 
+
+cela rend aussi l’expérience de l’utilisateur plus dynamique 
+
+
+3- Comment ça marche : 
+
+dans le document HTML 
+
+une structure est créée
+
+grâce a une balise template a laquelle on attribue un id on créer un squelette avec des h et des p vides 
+
+on créer un bouton avec une action on click 
+
+dans le document javascript : 
+
+on créer une fonction dans laquelle on créer les constantes 
+
+const template = document.querySelector('#article-template')
+
+stocke dans constante template toute la partie contenue dans la balise template du html 
+
+const articlesData = [
+    {title: 'Lorem ipsum', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+    {title: 'Elsass Ipsum', content: 'Lorem Elsass ipsum tellus Chulien lacus quam, Yo du.'},
+  ]
+
+créer un objet articles data dans lequel on stocke les titres et les paragraphes 
+
+ // for each article
+  for (let i = 0; i < articlesData.length; i++) {
+    // get article data
+    const articleData = articlesData[i]
+
+
+pour chaque article dans le fichier html on défini i a 0 et tant que i est inférieur a la longueur de l’objet article date on incrémente i de 1 
+
+const article = template.content.cloneNode(true);
+
+dans une constante article on va cloner ce qui est enregistré dans la constante template c’est a dire le contenu de article-template 
+
+
+article.querySelector('h1').textContent = articleData.title
+article.querySelector('p').textContent = articleData.content
+ 
+on rempli le titre de l’article et le contenu 
+
+
+document.body.appendChild(article)
+
+on clone et on ajoute a chaque fois  les deux blocs articles et on les ajoute a la suite des autres 
+
+
+4 – Comment l’utiliser dans un projet : 
+
+Faire apparaître les détails moins importants grâce a un clic sur une image. Pour le projet Tarantino sur la page d’accueil on peut afficher plus en détail les articles et les news grâce au clic sur la boite articles. 
