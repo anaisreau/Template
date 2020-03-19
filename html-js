@@ -1,0 +1,40 @@
+<p>content of a template element doesn't show up</p>
+
+<template id="article-template">
+  <article>
+    <h1></h1>
+    <p></p>
+  </article>
+</template>
+<!--take a look: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template-->
+
+<button type="click" onclick="useTemplate()">use it</button>
+<!--once clicked, use inspector to find the articles-->
+
+
+function useTemplate() {
+  // get the template
+  const template = document.querySelector('#article-template');
+
+  // prepare the data
+  const articlesData = [
+    {title: 'Lorem ipsum', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'},
+    {title: 'Elsass Ipsum', content: 'Lorem Elsass ipsum tellus Chulien lacus quam, Yo du.'},
+  ]
+
+  // for each article
+  for (let i = 0; i < articlesData.length; i++) {
+    // get article data
+    const articleData = articlesData[i]
+
+    // clone content of the template
+    const article = template.content.cloneNode(true);
+
+    // fill article title
+    article.querySelector('h1').textContent = articleData.title
+article.querySelector('p').textContent = articleData.content
+    // TODO: fill article content
+
+    document.body.appendChild(article)
+  }
+}
